@@ -160,14 +160,17 @@
         /* --- GALLERY --- */
         #gallery {
             background: white;
-            justify-content: space-between;
+            justify-content: center;
             padding: 60px 0;
+            height: auto;
+            min-height: 100vh;
         }
 
         .carousel-container {
             width: 100%;
             overflow: hidden;
             display: flex;
+            margin-bottom: 50px;
         }
 
         .track {
@@ -189,8 +192,25 @@
             100% { transform: translateX(calc(-180px * 6)); }
         }
 
+        /* --- SPECIAL MIDDLE TEXT --- */
+        .middle-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--heart-red);
+            text-align: center;
+            margin: 40px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .footer-text {
-            margin-bottom: 30px;
+            margin-top: 20px;
+            margin-bottom: 50px;
             text-align: center;
             width: 85%;
             font-size: 0.9rem;
@@ -237,9 +257,14 @@
                 <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.41.02-pm.jpeg">
             </div>
         </div>
+
+        <div class="middle-message">
+            I love you, Aisya! ❤️
+        </div>
+
         <div class="footer-text">
             <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px; width: 50%; margin-left: 25%;">
-            Made by your boyfie with all of his love for you, <br>
+            Made with love, and always yours, <br>
             <strong>Arde</strong>
         </div>
     </section>
@@ -265,17 +290,16 @@ You did your best today, and whatever happened, I'm so so proud of you, sayang.
 
 I'll always be here to stand by your side. You made my life much better after I met you. I hope we can meet again soon yaa! I miss u soo bad:(
 
-Now, scroll down for a little surprise ;)`;
+Now, scroll down for a little surprise;)`;
 
         const audio = document.getElementById('bgMusic');
         let musicStarted = false;
 
         function openLetter() {
-            // Unlocks audio for mobile
             audio.play().then(() => {
                 audio.pause();
-                audio.currentTime = 133; // Starts at 2:13
-            }).catch(e => console.log("Audio ready for scroll..."));
+                audio.currentTime = 133; 
+            }).catch(e => console.log("Audio ready"));
 
             document.getElementById('envelope').classList.add('open');
             setTimeout(() => {
@@ -298,16 +322,13 @@ Now, scroll down for a little surprise ;)`;
             type();
         }
 
-        // Dedicated Scroll Trigger
         window.onscroll = function() {
             const gallerySection = document.getElementById('gallery');
             if (!gallerySection) return;
-            
             const position = gallerySection.getBoundingClientRect();
 
-            // When she is 100px away from seeing the photos
             if (position.top < window.innerHeight - 100 && !musicStarted) {
-                audio.play().catch(e => console.log("Play error: ", e));
+                audio.play().catch(e => console.log("Play failed: ", e));
                 musicStarted = true;
             }
         };
