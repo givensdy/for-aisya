@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For my dearest girlfriend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff5f7;
+            --accent-pink: #ffb7c5;
+            --heart-red: #d17a8a;
+            --text-color: #5a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- SPARKLES --- */
+        .sparkle-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 10px;
+            opacity: 0;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.7; transform: scale(1.2) rotate(20deg); }
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* --- ENVELOPE --- */
+        #landing {
+            background: linear-gradient(180deg, #fff5f7 0%, #ffe4e9 100%);
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 200px;
+            height: 140px;
+            background: #fdfcf0;
+            border: 2px solid #e6d5d8;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .envelope-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-top: 80px solid #f1e1e4;
+            transform-origin: top;
+            transition: transform 0.6s;
+            z-index: 2;
+        }
+
+        .seal {
+            position: absolute;
+            z-index: 3;
+            font-size: 30px;
+            transition: 0.5s;
+        }
+
+        .envelope-container.open::after { transform: rotateX(180deg); z-index: 0; }
+        .envelope-container.open .seal { opacity: 0; transform: scale(2); }
+
+        .open-btn {
+            margin-top: 60px;
+            background: white;
+            padding: 12px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-pink);
+            color: var(--heart-red);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* --- LETTER --- */
+        #letter-section {
+            background-color: #ffe4e9;
+        }
+
+        .paper {
+            background: #fff;
+            width: 95%;
+            max-width: 500px;
+            height: auto;
+            min-height: 80%;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            background-image: radial-gradient(#f1f1f1 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
+            overflow: hidden;
+        }
+
+        .corner-photo {
+            float: right;
+            shape-outside: inset(0);
+            width: 100px;
+            height: 130px;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            background: #fff;
+            padding: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        .letter-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #444;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* --- GALLERY --- */
+        #gallery {
+            background: white;
+            justify-content: space-between;
+            padding: 60px 0;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .track {
+            display: flex;
+            width: calc(180px * 12);
+            animation: infiniteScroll 25s linear infinite;
+        }
+
+        .track img {
+            width: 160px;
+            height: 220px;
+            margin: 0 10px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-180px * 6)); }
+        }
+
+        .footer-text {
+            margin-bottom: 30px;
+            text-align: center;
+            width: 85%;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" preload="auto">
+        <source src="https://cdn.discordapp.com/attachments/809782018489581570/1451098995479937056/Ed_Sheeran_-_Photograph_Official_Lyric_Video.mp3?ex=6944f0c0&is=69439f40&hm=d56b8c218f578e0befba9b42ef6a3e370416595b427eac68bf4b58a384c7e46e&" type="audio/mpeg">
+    </audio>
+
+    <div class="sparkle-container" id="sparkle-container"></div>
+
+    <section id="landing">
+        <div class="envelope-container" id="envelope" onclick="openLetter()">
+            <div class="seal">❤️</div>
+        </div>
+        <div class="open-btn" onclick="openLetter()">Open Me, Love</div>
+    </section>
+
+    <section id="letter-section">
+        <div class="paper">
+            <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.06.32-pm.jpeg" class="corner-photo" alt="Us">
+            <div id="typewriter" class="letter-text"></div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="carousel-container">
+            <div class="track">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.06.32-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.41.02-pm-1.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.06.33-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.40.50-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.40.50-pm-1.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.41.02-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.06.32-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.41.02-pm-1.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.06.33-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.40.50-pm.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.40.50-pm-1.jpeg">
+                <img src="https://ardesimagestorage.wordpress.com/wp-content/uploads/2025/12/whatsapp-image-2025-12-18-at-12.41.02-pm.jpeg">
+            </div>
+        </div>
+        <div class="footer-text">
+            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px; width: 50%; margin-left: 25%;">
+            Made by your boyfie with all of his love for you, <br>
+            <strong>Arde</strong>
+        </div>
+    </section>
+
+    <script>
+        // Sparkles generator
+        const sparkleContainer = document.getElementById('sparkle-container');
+        for (let i = 0; i < 20; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkleContainer.appendChild(sparkle);
+        }
+
+        const letterContent = `Dearest Aisya,
+
+I just wanted to leave this here for you to find after your busy day at work. I know how hard you've been working, and I'm really proud of you 💖. 
+
+You did your best today, and whatever happened, I'm so so proud of you, sayang. 
+
+I'll always be here to stand by your side. You made my life much better after I met you. I hope we can meet again soon yaa! I miss u soo bad:(
+
+Now, scroll down for a little surprise ;)`;
+
+        const audio = document.getElementById('bgMusic');
+        let musicStarted = false;
+
+        function openLetter() {
+            // Unlocks audio for mobile
+            audio.play().then(() => {
+                audio.pause();
+                audio.currentTime = 133; // Starts at 2:13
+            }).catch(e => console.log("Audio ready for scroll..."));
+
+            document.getElementById('envelope').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('letter-section').scrollIntoView({ behavior: 'smooth' });
+                setTimeout(startTyping, 800);
+            }, 600);
+        }
+
+        function startTyping() {
+            const element = document.getElementById('typewriter');
+            let i = 0;
+            element.innerHTML = ""; 
+            function type() {
+                if (i < letterContent.length) {
+                    element.innerHTML += letterContent.charAt(i);
+                    i++;
+                    setTimeout(type, 45);
+                }
+            }
+            type();
+        }
+
+        // Dedicated Scroll Trigger
+        window.onscroll = function() {
+            const gallerySection = document.getElementById('gallery');
+            if (!gallerySection) return;
+            
+            const position = gallerySection.getBoundingClientRect();
+
+            // When she is 100px away from seeing the photos
+            if (position.top < window.innerHeight - 100 && !musicStarted) {
+                audio.play().catch(e => console.log("Play error: ", e));
+                musicStarted = true;
+            }
+        };
+    </script>
+</body>
+</html>
